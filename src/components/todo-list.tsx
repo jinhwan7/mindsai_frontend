@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useOptimistic } from "react";
 import { addTodo, deleteTodo, toggleTodo } from "@/app/actions/todo";
 import { TodoItem } from "./todo-item";
 import { Input } from "@/components/ui/input";

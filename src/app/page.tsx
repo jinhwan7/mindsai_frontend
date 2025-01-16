@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchInitialTodos, loadFromLocalStorage } from "./actions/todo";
 import { TodoList } from "@/components/todo-list";
 import { Todo } from "@/types/todo";
