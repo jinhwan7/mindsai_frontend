@@ -48,7 +48,12 @@ export function TodoList({ initialTodos }: TodoListProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (newTodo.trim()) {
-      const todo = { id: Date.now(), title: newTodo.trim(), completed: false, userId: 1 };
+      const todo = {
+        id: Date.now(),
+        title: newTodo.trim(),
+        completed: false,
+        userId: 1,
+      };
       try {
         await addTodo(todo.title);
         setTodos([...todos, todo]);
