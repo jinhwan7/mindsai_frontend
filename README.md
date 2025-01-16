@@ -14,3 +14,6 @@ npm run start
 그 다음부터는 로컬스토리지만을 사용하도록 하였습니다
 
 
+## ui 라이브러리
+- radix-ui
+- lucide-react
