@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from "styled-components";
 
 const pulseAnimation = keyframes`
   0% { opacity: 0.5; }
   50% { opacity: 1; }
   100% { opacity: 0.5; }
-`
+`;
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const LoadingContainer = styled.div`
   align-items: center;
   min-height: 100vh;
   background-color: #f9fafb;
-`
+`;
 
 const LoadingDot = styled.div`
   width: 12px;
@@ -32,7 +32,7 @@ const LoadingDot = styled.div`
   &:nth-child(3) {
     animation-delay: 0.4s;
   }
-`
+`;
 
 export default function Loading() {
   return (
@@ -41,5 +41,5 @@ export default function Loading() {
       <LoadingDot />
       <LoadingDot />
     </LoadingContainer>
-  )
+  );
 }

@@ -1,13 +1,21 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import styled, { css } from "styled-components"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import styled, { css } from "styled-components";
 
 interface ButtonStyleProps {
-  $variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
-  $size?: 'default' | 'sm' | 'lg' | 'icon'
+  $variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  $size?: "default" | "sm" | "lg" | "icon";
 }
 
-const getVariantStyles = (variant: ButtonStyleProps["$variant"] = "default") => {
+const getVariantStyles = (
+  variant: ButtonStyleProps["$variant"] = "default"
+) => {
   const variants = {
     default: css`
       background-color: var(--primary);
@@ -20,7 +28,11 @@ const getVariantStyles = (variant: ButtonStyleProps["$variant"] = "default") => 
       background-color: var(--destructive);
       color: var(--destructive-foreground);
       &:hover {
-        background-color: color-mix(in srgb, var(--destructive) 90%, transparent);
+        background-color: color-mix(
+          in srgb,
+          var(--destructive) 90%,
+          transparent
+        );
       }
     `,
     outline: css`
@@ -53,10 +65,10 @@ const getVariantStyles = (variant: ButtonStyleProps["$variant"] = "default") => 
       &:hover {
         text-decoration-line: underline;
       }
-    `
-  }
-  return variants[variant]
-}
+    `,
+  };
+  return variants[variant];
+};
 
 const getSizeStyles = ($size: ButtonStyleProps["$size"] = "default") => {
   const sizes = {
@@ -77,10 +89,10 @@ const getSizeStyles = ($size: ButtonStyleProps["$size"] = "default") => {
     icon: css`
       height: 2.5rem;
       width: 2.5rem;
-    `
-  }
-  return sizes[$size]
-}
+    `,
+  };
+  return sizes[$size];
+};
 
 const StyledButton = styled.button<ButtonStyleProps>`
   display: inline-flex;
@@ -92,48 +104,41 @@ const StyledButton = styled.button<ButtonStyleProps>`
   font-size: 0.875rem;
   font-weight: 500;
   transition: colors 0.2s;
-  
+
   &:focus-visible {
     outline: none;
     ring: 2px;
     ring-offset: 2px;
   }
-  
+
   &:disabled {
     pointer-events: none;
     opacity: 0.5;
   }
-  
+
   svg {
     pointer-events: none;
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
   }
-  
-  ${props => getVariantStyles(props.$variant)}
-  ${props => getSizeStyles(props.$size)}
-`
+
+  ${(props) => getVariantStyles(props.$variant)}
+  ${(props) => getSizeStyles(props.$size)}
+`;
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonStyleProps {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ $variant, $size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : StyledButton
-    return (
-      <Comp
-        ref={ref}
-        $variant={$variant}
-        $size={$size}
-        {...props}
-      />
-    )
+    const Comp = asChild ? Slot : StyledButton;
+    return <Comp ref={ref} $variant={$variant} $size={$size} {...props} />;
   }
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 
-export { Button }
+export { Button };
